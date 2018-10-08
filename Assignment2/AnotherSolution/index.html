@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="ShoppingListCheckOff">
+  <head>
+    <meta charset="utf-8">
+    <script src="./../angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Check Off Shopping List</title>
+  </head>
+  <body>
+    <h1>Check Off Shopping List</h1>
+    <div ng-controller='ToBuyController as list'>
+      <h3>To-Buy List</h3>
+      <li ng-repeat="item in list.items">
+        {{item.quantity}} of {{item.name}}(s)<button ng-click="list.moveToBought($index)"> Bought</button>
+      </li>
+    </div>
+    <div ng-controller='AlreadyBoughtController as list'>
+      <h3>Bought List</h3>
+      <div ng-if="list.items.length === 0">{{list.emptyListMsg}}</div>
+      <li ng-repeat="item in list.items">
+        {{item.quantity}} of {{item.name}}(s)
+      </li>
+    </div>
+  </body>
+</html>
